@@ -1,0 +1,40 @@
+<script defer src="/js/search.js"></script>
+
+<header class="animate__animated animate__fadeInDown">
+  <nav class="navbar navbar-expand-lg bg-white">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/img/logo.png" alt="" width="60" height="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {{#compare atciveLink "main"}} active {{/compare}}" aria-current="page" href="/">На главную</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{#compare atciveLink "animals"}} active {{/compare}}" href="/animals">Животные</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{#compare atciveLink "tarif"}} active {{/compare}}" href="/tariffs">Тарифы</a>
+          </li>
+
+          {{#if login}}
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/logout">Выйти из режима администрирования</a>
+          </li>
+          {{/if}}
+
+
+        </ul>
+        <form name="formSearch" action="/search" method="POST" class="d-flex col-4" role="search">
+          <input name="search" class="form-control me-2 border-success" type="search" aria-label="Search">
+          <button id="btnSearch" class="btn btn-success" type="submit"><img src="/img/search.png" alt="Поиск"></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>

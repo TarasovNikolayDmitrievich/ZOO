@@ -1,0 +1,64 @@
+<script defer src="/js/animals.js"></script>
+{{#if login}}
+<div style="display: flex; justify-content:center; margin-top:2%">
+  <a class="btn btn-success btn-lg" href="/animals/new" role="button">Добавить новую
+    карточку</a>
+</div>
+{{/if}}
+<div id="animalsList" style="display: flex; flex-wrap: wrap; justify-content:center; margin:0% 7%">
+  {{#if login}}
+  {{#if animals}}
+  {{#each animals}}
+  <div class="card animalCard animate__animated animate__fadeIn" style="width: 18rem; margin:2%;">
+    <div class="animalPic">
+      <a href="/animals/{{this.id}}">
+        {{#each this.Pictures}}
+        <img height="180" src="/img/{{this.animal_id}}/{{this.link}}" class="card-img-top" alt="animal">
+        {{/each}}
+      </a>
+      <a href="/animals/{{this.id}}">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+        </div>
+      </a>
+    </div>
+    <ul class="nav">
+      <li class="nav-item editAnimal">
+        <a id="editAnimal" class="nav-link" href="/animals/{{this.id}}/edit">Редактировать</a>
+      </li>
+      <li class="nav-item deleteAnimal">
+        <a id="deleteAnimal" class="nav-link" href="/animals/{{this.id}}">Удалить</a>
+      </li>
+    </ul>
+  </div>
+  {{/each}}
+  {{else}}
+  <div style="margin-top:3%; background-color: rgb(255, 255, 255, 0.6); padding: 10px;">
+    <h2>Животных не найдено</h2>
+  </div>
+  {{/if}}
+  {{else}}
+  {{#if animals}}
+  {{#each animals}}
+  <div class="card animalCard animate__animated animate__fadeIn" style="width: 18rem; margin:2%;">
+    <div class="animalPic">
+      <a href="/animals/{{this.id}}">
+        {{#each this.Pictures}}
+        <img height="180" src="/img/{{this.animal_id}}/{{this.link}}" class="card-img-top" alt="animal">
+        {{/each}}
+      </a>
+      <a href="/animals/{{this.id}}">
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+        </div>
+      </a>
+    </div>
+  </div>
+  {{/each}}
+  {{else}}
+  <div style="margin-top:3%; background-color: rgb(255, 255, 255, 0.6); padding: 10px;">
+    <h2>Животных не найдено</h2>
+  </div>
+  {{/if}}
+  {{/if}}
+</div>

@@ -1,0 +1,32 @@
+<script defer src="/js/animalEdit.js"></script>
+<div style="margin:10%; padding: 15px; background-color: rgb(255, 255, 255, 0.5);border-radius: 0%;">
+  <form name="updateForm" data-id="{{animal.id}}" action="/animals/{{animal.id}}/edit" method="POST"
+    encType="multipart/form-data">
+    <div class="mb-3">
+      <label for="floatingInput" class="form-label">Введите название животного</label>
+      <input class="form-control" name="name" placeholder="Название животного" id="floatingInput"
+        value="{{animal.name}}"></input>
+    </div>
+    <div class="mb-3">
+      <label for="floatingTextarea2" class="form-label">Введите описание животного</label>
+      <textarea class="form-control" name="description" placeholder="Описание животного" id="floatingTextarea2"
+        style="height: 100px">{{animal.description}}</textarea>
+    </div>
+    <div class="mb-3">
+      {{!-- <label for="formFileMultiple" class="form-label text-white">Фото</label> --}}
+      <input name="sampleFile" class="form-control" type="file" multiple="multiple">
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+  </form>
+  <br>
+  <div id='prevPicDiv' class="row row-cols-6 row-cols-md-6 g-4">
+    {{#each animal.Pictures}}
+    <div class="col" data-picId={{this.id}}>
+      <div class="card animalCard">
+        <button type="button" class="btn-close" aria-label="Close"></button>
+        <img src="/img/{{this.animal_id}}/{{this.link}}" class="card-img-top" alt={{animal.name}}>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
